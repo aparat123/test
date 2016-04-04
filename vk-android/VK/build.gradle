@@ -36,8 +36,10 @@ android {
 }
 
 dependencies {
+	
 	compile 'com.android.support:design:+'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.vk:androidsdk:+'
+    compile project(':vksdk_library')
+	compile 'com.squareup.picasso:picasso:+'
 }

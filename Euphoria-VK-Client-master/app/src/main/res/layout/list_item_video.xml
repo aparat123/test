@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:id="@+id/cardVideo"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardBackgroundColor="?cardBackgroundColor"
+    card_view:cardCornerRadius="0dp"
+    card_view:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivVideoImage"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/camera_b"/>
+
+            <View
+                android:id="@+id/viewVideoBGTime"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="14dp"
+                android:background="@drawable/rectangle_rounded"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvVideoDuration"
+                android:layout_width="50dp"
+                android:layout_height="24dp"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="14dp"
+                android:gravity="center"
+                android:text="12:24"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/primary_text_dark"/>
+        </FrameLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tvVideoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Palette Perfect: How Material Design Makes Color Easy"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?android:textColorPrimary"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tvVideoDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:maxLines="3"
+            android:text="Михаил Николаев | 1 700 Просмотров"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:textColorSecondary"/>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

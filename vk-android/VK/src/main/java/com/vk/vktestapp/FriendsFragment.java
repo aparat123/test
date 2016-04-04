@@ -9,34 +9,39 @@ import android.widget.*;
 import com.vk.sdk.api.*;
 import com.vk.sdk.api.model.*;
 import android.support.v4.app.*;
+import com.vk.vktestapp.adapter.*;
+import java.util.*;
+import com.vk.sdk.api.methods.*;
 
 
 public class FriendsFragment extends ListFragment
 {
-
+	ArrayList<Product> products = new ArrayList<Product>();
+	FriendsAdapter boxAdapter;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		
-		//listView = (ListView) getView().findViewById(R.id.listViewfrd);
-
-		VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "first_name, last_name"));
+		VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "id, first_name, last_name"));
 		request.executeWithListener(new VKRequest.VKRequestListener() {
 				@Override
 				public void onComplete(VKResponse response){
 					super.onComplete(response);
 
 					VKList list = (VKList) response.parsedModel;
-					ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(),
-																				 android.R.layout.simple_list_item_1, list);
-					setListAdapter(arrayAdapter);
+					//ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list);
+					boxAdapter = new FriendsAdapter(getActivity(), list);
+					setListAdapter(boxAdapter);
+					
+					
 
 				
 
 				}
 			});
-		Toast.makeText(getContext(), "Good", Toast.LENGTH_LONG).show();
+		String first_name = VKApiUser.FIELD_ONLINE;
+		Toast.makeText(getContext(), first_name, Toast.LENGTH_LONG).show();
 	}
     
 
@@ -46,11 +51,6 @@ public class FriendsFragment extends ListFragment
         return inflater.inflate(R.layout.friends_fragment, container, false);
 		
 		
-		
-		
-		
-		
-		
     }
-
+	
 }

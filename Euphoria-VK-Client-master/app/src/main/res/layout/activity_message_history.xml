@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/llMessageHistory"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".MessageHistoryActivity"
+    tools:menu="main_menu">
+
+    <View
+        android:id="@+id/statusBarBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_toolbar"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <ru.euphoriadev.vk.view.CircleImageView
+            android:id="@+id/ivPhoto_message_toolbar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/camera_b"
+            android:visibility="gone"
+            app:border_color="@android:color/white"
+            app:border_width="2dp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/ivWallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:visibility="gone"/>
+
+        <ru.euphoriadev.vk.view.FixedListView
+            android:id="@+id/lvHistory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:divider="@android:color/transparent"
+            android:smoothScrollbar="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="@drawable/toolbar_dropshadow"/>
+
+        <View
+            android:id="@+id/vshadow_history"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/message_dporshadow"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:minHeight="00dp"
+            android:orientation="horizontal"
+            android:paddingBottom="12dp"
+            android:paddingRight="8dp"
+            android:paddingTop="12dp">
+
+            <ImageButton
+                android:id="@+id/btnMessageAttach"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="6dp"
+                android:src="@drawable/ic_attachment"
+                android:visibility="gone"/>
+
+            <EditText
+                android:id="@+id/messageText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/message_sent"
+                android:hint="@string/write_message"
+                android:inputType="textCapSentences|textMultiLine"
+                android:maxLines="7"
+                android:minHeight="40dp"
+                android:paddingLeft="6dp"
+                tools:text="Test message!"
+                tools:textColor="@color/black"
+                />
+
+
+            <ru.euphoriadev.vk.view.fab.FloatingActionButton
+                android:id="@+id/fabMessageSebd"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="top|right"
+                android:src="@drawable/ic_keyboard_arrow_right"
+                fab:fab_type="mini"/>
+
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/attachmentPanel"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="?colorAccent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="14dp"
+            android:src="@drawable/ic_folder"/>
+
+        <ImageView
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="14dp"
+            android:src="@drawable/ic_audiotrack_white"/>
+
+        <ImageView
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="14dp"
+            android:src="@drawable/ic_movie"/>
+    </LinearLayout>
+
+
+</LinearLayout>
