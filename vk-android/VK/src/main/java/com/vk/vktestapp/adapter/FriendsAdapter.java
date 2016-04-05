@@ -20,28 +20,32 @@ import com.squareup.picasso.*;
 
 public class FriendsAdapter extends BaseAdapter
 {
-VKList listr;
-Context context;
-	public VKApiUser user;
+    Context context;
+    private VKList list;
+	private VKApiUserFull user;
 
-	private Picasso picasso;
-    public FriendsAdapter(Context context, VKList list) {
-        picasso = Picasso.with(context);
-listr=list;
-        
-    }
 
-	@Override
-    public int getCount() {
-        return listr.size();
-    }
+	private TextView name;
 
-	@Override
-    public Object getItem(int position) {
-        return listr.get(position);
-    }
+
+    public FriendsAdapter(Context context, VKList list){
+        this.context = context;
+        this.list = list;
 	
-	@Override
+		}
+
+
+    @Override
+    public int getCount() {
+        return list.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return list.get(position);
+    }
+
+    @Override
     public long getItemId(int position) {
         return position;
     }
@@ -50,17 +54,18 @@ listr=list;
 	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view;
-
+		
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = mInflater.inflate(R.layout.friends_item, parent, false);
+			
         } else {
             view = convertView;
         }
-
-        
-        ((TextView)view.findViewById(R.id.names)).setText(user.first_name + " " + user.last_name);
-       
+		name = (TextView) view.findViewById(R.id.nams);
+     
+		name.setText(" " + user.last_name);
+     
         return view;
     }
 

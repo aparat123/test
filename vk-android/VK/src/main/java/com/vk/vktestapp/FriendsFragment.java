@@ -16,8 +16,8 @@ import com.vk.sdk.api.methods.*;
 
 public class FriendsFragment extends ListFragment
 {
-	ArrayList<Product> products = new ArrayList<Product>();
-	FriendsAdapter boxAdapter;
+	ArrayList<VKApiUser> list;
+	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,14 +25,17 @@ public class FriendsFragment extends ListFragment
 		
 		VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "id, first_name, last_name"));
 		request.executeWithListener(new VKRequest.VKRequestListener() {
+
+				private ListAdapter FriendsAdapter;
 				@Override
 				public void onComplete(VKResponse response){
 					super.onComplete(response);
 
 					VKList list = (VKList) response.parsedModel;
+					
 					//ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list);
-					boxAdapter = new FriendsAdapter(getActivity(), list);
-					setListAdapter(boxAdapter);
+					FriendsAdapter = new FriendsAdapter(getActivity(), list);
+					setListAdapter(FriendsAdapter);
 					
 					
 
