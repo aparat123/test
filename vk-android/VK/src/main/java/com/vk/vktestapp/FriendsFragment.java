@@ -16,35 +16,31 @@ import com.vk.sdk.api.methods.*;
 
 public class FriendsFragment extends ListFragment
 {
-	ArrayList<VKApiUser> list;
-	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		
-		VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "id, first_name, last_name"));
+		VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "id, first_name, last_name, photo_50"));
 		request.executeWithListener(new VKRequest.VKRequestListener() {
 
-				private ListAdapter FriendsAdapter;
+				private FriendsAdapter FriendsAdapter;
+
 				@Override
 				public void onComplete(VKResponse response){
 					super.onComplete(response);
 
 					VKList list = (VKList) response.parsedModel;
 					
-					//ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list);
 					FriendsAdapter = new FriendsAdapter(getActivity(), list);
 					setListAdapter(FriendsAdapter);
 					
 					
 
-				
-
 				}
 			});
-		String first_name = VKApiUser.FIELD_ONLINE;
-		Toast.makeText(getContext(), first_name, Toast.LENGTH_LONG).show();
+		
+		
 	}
     
 
