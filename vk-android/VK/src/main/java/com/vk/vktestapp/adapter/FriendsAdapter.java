@@ -17,21 +17,19 @@ import com.vk.sdk.api.methods.*;
 import android.widget.*;
 import android.database.*;
 import com.squareup.picasso.*;
+import android.graphics.*;
 
 public class FriendsAdapter extends BaseAdapter
 {
     Context context;
     private VKList list;
-	private VKApiUserFull user;
-
-
-	private TextView name;
-
+	String Name;
+	Picasso picasso;
 
     public FriendsAdapter(Context context, VKList list){
         this.context = context;
         this.list = list;
-	
+		picasso = Picasso.with(context);
 		}
 
 
@@ -54,21 +52,36 @@ public class FriendsAdapter extends BaseAdapter
 	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view;
+		ViewHolder holder;
 		
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = mInflater.inflate(R.layout.friends_item, parent, false);
-			
+			holder = new ViewHolder(view);
         } else {
             view = convertView;
+			holder = (ViewHolder) view.getTag();
         }
-		name = (TextView) view.findViewById(R.id.nams);
-     
-		name.setText(" " + user.last_name);
-     
+		final VKApiUser user = (VKApiUser) getItem(position);
+		
+	
+		holder.namers.setText(user.first_name + " " + user.last_name);
+		
+		picasso.load(user.photo_50)
+			.config(Bitmap.Config.RGB_565)
+		.into(holder.Photo);
+	
         return view;
     }
+	private static final class ViewHolder {
+        public TextView namers;
+        public ImageView Photo;
 
+        public ViewHolder(View view) {
+            namers = (TextView) view.findViewById(R.id.nams);
+            Photo = (ImageView) view.findViewById(R.id.photo);
+        }
+    }
 
 	
 	
