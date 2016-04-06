@@ -5,9 +5,9 @@
 	android:layout_width="match_parent">
 
 	<ImageView
-		android:id="@+id/icon"
-		android:layout_width="50dp"
-		android:layout_height="50dp"
+		android:id="@+id/photo"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
 		android:layout_alignParentLeft="true"
 		android:layout_centerVertical="true"
 		android:layout_marginLeft="12dp"
@@ -19,9 +19,9 @@
 		android:layout_width="wrap_content"
 		android:layout_height="30dp"
 		android:layout_marginTop="10dp"
-		android:layout_toRightOf="@id/icon"
+		android:layout_toRightOf="@id/photo"
 		android:textColor="#000000"
-		android:textSize="20sp"/>
+		android:textSize="15sp"/>
 
 </RelativeLayout>
 
