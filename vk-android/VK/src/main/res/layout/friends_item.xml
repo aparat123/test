@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_height="50dp"
+	android:layout_height="70dp"
 	android:layout_width="match_parent">
 
 	<ImageView
 		android:id="@+id/photo"
-		android:layout_width="40dp"
-		android:layout_height="40dp"
+		android:layout_width="60dp"
+		android:layout_height="60dp"
 		android:layout_alignParentLeft="true"
 		android:layout_centerVertical="true"
 		android:layout_marginLeft="12dp"
@@ -21,7 +21,19 @@
 		android:layout_marginTop="10dp"
 		android:layout_toRightOf="@id/photo"
 		android:textColor="#000000"
-		android:textSize="15sp"/>
+		android:textSize="18sp"
+		android:layout_centerVertical="true"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Medium Text"
+		android:layout_toRightOf="@id/nams"
+		android:layout_centerVertical="true"
+		android:layout_marginLeft="10dp"
+		android:id="@+id/onli"
+		android:textSize="12sp"
+		android:textColor="#000000"/>
 
 </RelativeLayout>
 

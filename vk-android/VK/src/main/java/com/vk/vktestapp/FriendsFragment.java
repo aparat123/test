@@ -14,14 +14,24 @@ import java.util.*;
 import com.vk.sdk.api.methods.*;
 
 
-public class FriendsFragment extends ListFragment
+public class FriendsFragment extends Fragment
 {
-	
+	ListView lv;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		
-		VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "id, first_name, last_name, photo_50"));
+		
+	}
+    
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.friends_fragment, container, false);
+		final ListView lv = (ListView)rootView.findViewById(R.id.flist);
+		
+		VKRequest request = VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "id, first_name, last_name, photo_50, photo_100"));
 		request.executeWithListener(new VKRequest.VKRequestListener() {
 
 				private FriendsAdapter FriendsAdapter;
@@ -31,25 +41,19 @@ public class FriendsFragment extends ListFragment
 					super.onComplete(response);
 
 					VKList list = (VKList) response.parsedModel;
-					
+
 					FriendsAdapter = new FriendsAdapter(getActivity(), list);
-					setListAdapter(FriendsAdapter);
-					
-					
+					lv.setAdapter(FriendsAdapter);
+
+
 
 				}
 			});
 		
 		
-	}
-    
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.friends_fragment, container, false);
 		
 		
+		return rootView;
     }
 	
 }
