@@ -31,8 +31,8 @@ ListView listView;
 		outlist = getIntent().getStringArrayListExtra("out");
 		id = getIntent().getIntExtra("id", 0);
 		
-		//Arrays.sort(inlist.toArray(),Collections.reverseOrder());
-		//Arrays.sort(outlist.toArray(),Collections.reverseOrder());
+		Arrays.sort(inlist.toArray(),Collections.reverseOrder());
+		Arrays.sort(outlist.toArray(),Collections.reverseOrder());
 		
 		text = (EditText) findViewById(R.id.dialogEdit);
 		btn = (Button) findViewById(R.id.dialogButton);

@@ -31,7 +31,7 @@ public class MessFragment extends Fragment {
 		final ListView lv = (ListView)rootView.findViewById(R.id.messlist);
 		
 		
-		VKRequest request = VKApi.messages().getDialogs(VKParameters.from(VKApiConst.COUNT, 10));
+		VKRequest request = VKApi.messages().getDialogs(VKParameters.from(VKApiConst.COUNT, 20));
 		request.executeWithListener(new VKRequest.VKRequestListener() {
 				@Override
 				public void onComplete(VKResponse response) {
